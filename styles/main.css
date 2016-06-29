@@ -1,0 +1,139 @@
+/*------------------------global styles---------------------------------------------------*/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+td{
+  padding-right: 80px;
+  padding-bottom: 20px;
+}
+.button {
+  display: block;
+  margin-top: 20px;
+  text-decoration: none;
+  width: 150px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.3);
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+input {
+  padding: 5px;
+  margin-right: 20px;
+}
+
+body {
+  padding: 0;
+  font-family: 'Roboto', serif;
+}
+
+.padding-right {
+  padding-right: 30px;
+}
+
+.padding-bottom {
+  padding-bottom: 10px;
+}
+
+.padding-left {
+  padding-left: 20px;
+}
+
+.title {
+  margin-bottom: 50px;
+}
+
+
+#seatSelection {
+  text-align: center;
+}
+#seatSelection a {
+  margin-left: 45%;
+}
+
+
+/*-------------------seat reservation ---------------------------*/
+.content {
+  text-align: center;
+}
+
+.seatLayout {
+  margin: 30px auto;
+}
+
+.seat {
+  cursor: pointer;
+}
+
+.buttons {
+  margin: 30px auto;
+}
+
+.legend img{
+  vertical-align: bottom;
+}
+
+#confirmSelection {
+  text-align: center;
+  margin-left: 44%;
+}
+/*---------------checkbox styles------------------------------*/
+
+#pos {
+  position: relative;
+}
+
+.squaredOne label {
+  cursor: pointer;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 4px;
+  top: 4px;
+  -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px white;
+  -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px white;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px white;
+  background: -webkit-linear-gradient(top, #222222 0%, #45484d 100%);
+  background: -moz-linear-gradient(top, #222222 0%, #45484d 100%);
+  background: -o-linear-gradient(top, #222222 0%, #45484d 100%);
+  background: -ms-linear-gradient(top, #222222 0%, #45484d 100%);
+  background: linear-gradient(top, #222222 0%, #45484d 100%);
+}
+
+.squaredOne label:after {
+  opacity: 0;
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #00bf00;
+  background: -webkit-linear-gradient(top, #00bf00 0%, #009400 100%);
+  background: -moz-linear-gradient(top, #00bf00 0%, #009400 100%);
+  background: -o-linear-gradient(top, #00bf00 0%, #009400 100%);
+  background: -ms-linear-gradient(top, #00bf00 0%, #009400 100%);
+  background: linear-gradient(top, #00bf00 0%, #009400 100%);
+  top: 2px;
+  left: 2px;
+  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.squaredOne label:hover::after {
+  opacity: 1;
+  background: yellow;
+}
+
+.squaredOne input[type=checkbox]:checked + label:after {
+  opacity: 1;
+  background: green;
+}
+
+.booked input[type=checkbox]:checked + label:after {
+  background: red;
+}
