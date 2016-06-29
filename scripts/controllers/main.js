@@ -33,6 +33,7 @@ angular.module('seatReservationApp')
                 } else {
                     $scope.currentUser.noOfSeats--;
                     selected.push(seatPos);
+                    $scope.currentUser.selectedSeats.push(seatPos);
                  }
             }else{
                 console.log('You have to select how many seats you want');
@@ -74,9 +75,23 @@ angular.module('seatReservationApp')
 
             $scope.myVar1 = true;
 
-           
-        
-    
-        }   
+        }  
+
+        $scope.confirmSelection = function(user){
+            
+            
+            console.log($scope.currentUser);
+            console.log($scope.bookedSeats);
+
+
+            user.selectedSeats.forEach(function(seat){
+                reserved.push(seat);
+            });
+
+            user.selectedSeats.toString();
+
+            $scope.bookedSeats.push(user);
+
+        } 
 
     });
