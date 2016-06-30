@@ -4,36 +4,28 @@
 
             <h1>Movie Seat Reservation</h1>
         
-        <form>
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Username" ng-model="currentUser.name"/>
-            <label for="seats">Number of Seats </label>
-            <input type="text" id="seats" placeholder="No of Seats" ng-model="currentUser.noOfSeats" ng-bind="currenUser.initialNoOfSeats">
+            <form>
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Username" ng-model="currentUser.name"/>
+                <label for="seats">Number of Seats </label>
+                <input type="text" id="seats" placeholder="No of Seats" ng-model="currentUser.noOfSeats" >
 
-            
-                <a href="#" class="button" ng-click="startSelection(currentUser)">Start Selection</a>
-        </form>
+                
+                    <a href="#" class="button" ng-click="startSelection(currentUser)">Start Selection</a>
+            </form>
             
         </div>
-
-        
          <hr />
+
 
     <table class="seatLayout">
         <tr>
-            <td class="padding-bottom"></td>
-            <td class="padding-bottom" ng-repeat="col in cols track by $index" ng-bind="col"></td>
+            <td ></td>
+            <td  ng-repeat="col in cols track by $index" ng-bind="col"></td>
         </tr>
         <tr ng-repeat="row in rows">
-            <td class="padding-right" ng-bind="row"></td>
-            <td class="seat" ng-repeat="col in cols" ng-click="checker(row + col)" ng-switch on="getStatus(row + col)" ng-disabled="myVar{{row+col}}">
-                <!-- <div id="pos">
-                    <div class="squaredOne" ng-class="myVar">
-                        <input type="checkbox" value="None" id="{{row + col}}" name="check" ng-disabled="{{myVar}}" />
-                        <label for="{{row + col}}"></label>
-                    </div>
-                </div> -->
-
+            <td  ng-bind="row"></td>
+            <td class="seat" ng-repeat="col in cols" ng-click="checker(row + col)" ng-switch on="getStatus(row + col)" >
                 <img ng-switch-when="selected" src="images/seatsSelected.png">
                 <img ng-switch-when="reserved" src="images/seatsReserved.png">
                 <img ng-switch-default src="images/seatsAvailable.png">
@@ -44,19 +36,14 @@
 
     <div class="showcase">
         <img src="images/seatsAvailable.png">  Available
-        <img src="images/seatsReserved.png" class="padding-left">  Reserved
-        <img src="images/seatsSelected.png" class="padding-left">  Selected
+        <img src="images/seatsReserved.png" >  Reserved
+        <img src="images/seatsSelected.png" >  Selected
     </div>
 
      <a href="#" class="button" ng-click="confirmSelection(currentUser)" id="confirmSelection">Confirm Selection</a>
 
-    <!-- <div class="buttons">
-        <button ng-click="clearSelected()">Clear</button>
-        <button ng-click="showSelected()">Show selected seats!</button>
-    </div> -->
-
     <div id="bookedTickets">
-        <table>
+        <table class="table table-striped">
             <tr>
                 <td>Name</td>
                 <td>No of Seats</td>

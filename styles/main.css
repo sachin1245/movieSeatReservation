@@ -7,7 +7,7 @@
 
 td{
   padding-right: 80px;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 }
 .button {
   display: block;
@@ -32,23 +32,19 @@ body {
   font-family: 'Roboto', serif;
 }
 
-.padding-right {
-  padding-right: 30px;
+a:link{
+  text-decoration: none;
+
 }
-
-.padding-bottom {
-  padding-bottom: 10px;
+a:visited{
+  text-decoration: none;
 }
-
-.padding-left {
-  padding-left: 20px;
+a:hover{
+  text-decoration: none;
 }
-
-.title {
-  margin-bottom: 50px;
+a:active{
+  text-decoration: none;
 }
-
-
 #seatSelection {
   text-align: center;
 }
@@ -63,7 +59,7 @@ body {
 }
 
 .seatLayout {
-  margin: 30px auto;
+  margin: 5px auto 10px ;
 }
 
 .seat {
@@ -86,16 +82,5 @@ body {
 
 #bookedTickets table{
   margin-top: 20px;
-  border: solid 2px blue;
-  padding: 15px;
-  margin-left: 50px;
-
-}
-
-
-#bookedTickets td{
-  margin-right: 20px;
-  font-size: 20px;
-  border-right: solid 2px blue;
-  text-align: center;
+ 
 }

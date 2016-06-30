@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('seatReservationApp')
+angular.module('movieSeatReservation')
     .controller('mainController', function ($scope) {
 
        
@@ -12,9 +12,11 @@ angular.module('seatReservationApp')
         var reserved = [];
         var selected = [];
 
-        
-
+        //All the Users who have booked the tickets
         $scope.bookedUsers =[];
+
+        //user currently booking 
+
         $scope.currentUser = {
             name: '',
             noOfSeats: '',
@@ -23,9 +25,6 @@ angular.module('seatReservationApp')
         }
        
 
-         
-         
-        
         $scope.seatClicked = function(seatPos,count) {
             
             var index = selected.indexOf(seatPos);
@@ -40,7 +39,7 @@ angular.module('seatReservationApp')
                 }
                     
             });
-            console.log(count);
+
             if($scope.currentUser.noOfSeats + count > 0){
                     if(index != -1) {
                         selected.splice(index, 1);
@@ -61,27 +60,27 @@ angular.module('seatReservationApp')
                         selected.push(seatPos);
                         $scope.currentUser.selectedSeats.push(seatPos);
 
-                 }
+                    }
             }else{
-                console.log('You have to select how many seats you want');
+                console.log('Select the no of seats you want to book');
             }
             
         }
 
-        $scope.checker = function(total){
-            console.log(total);
+
+        $scope.checker = function(seatPos){
 
             var count1= 0;
             var count2 = 0;
             reserved.forEach(function(reserve){
-                if(reserve == total){
+                if(reserve == seatPos){
                     count1++;
                 }
                     
             });
 
             selected.forEach(function(select){
-                if(select == total){
+                if(select == seatPos){
                     count2++;
                 }
             });
@@ -94,7 +93,7 @@ angular.module('seatReservationApp')
              }else if(count1 > 0){
                 return console.log('This seat is Already booked');
              }else{
-                return $scope.seatClicked(total,count2);
+                return $scope.seatClicked(seatPos,count2);
              }
            
          }
@@ -108,22 +107,8 @@ angular.module('seatReservationApp')
             }
         }
 
-        // clear selected
-        $scope.clearSelected = function() {
-            selected = [];
-        }
-
-        // show selected
-        $scope.showSelected = function() {
-            if(selected.length > 0) {
-                alert("Selected Seats: \n" + selected);
-            } else {
-                alert("No seats selected!");
-            }
-        }
-
        
-
+        //Start Booking
         $scope.startSelection  = function(user){
 
             if(user.name.length < 1 ){
@@ -134,39 +119,37 @@ angular.module('seatReservationApp')
                 return console.log('No of Seats Should be Atleast One')
             }
             $scope.currentUser = user;
-            console.log($scope.currentUser.noOfSeats);
-            console.log(user);
+            
 
         }  
+
+        //Confirm Booking
 
         $scope.confirmSelection = function(user){
             
         
-        if($scope.currentUser.name.length < 1){
-                 return console.log('Enter a Valid Name')
-        }else if($scope.currentUser.count < 1){
-                 
-                 return console.log('No seats are selected');
-        }else if($scope.currentUser.noOfSeats > 0){
-                return console.log('you have ' + $scope.currentUser.noOfSeats + ' more seats to select before confirm')
-        }   
-         user.selectedSeats.forEach(function(seat){
-                reserved.push(seat);
+            if($scope.currentUser.name.length < 1){
+                     return console.log('Enter a Valid Name')
+            }else if($scope.currentUser.count < 1){
+                      return console.log('No seats are selected');
+            }else if($scope.currentUser.noOfSeats > 0){
+                    return console.log('you have ' + $scope.currentUser.noOfSeats + ' more seats to select before confirm')
+            }   
+
+             user.selectedSeats.forEach(function(seat){
+                    reserved.push(seat);
             });
-          
-          var bookedData = {
-            name: $scope.currentUser.name,
-            noOfSeats: $scope.currentUser.count,
-            seatSelected: $scope.currentUser.selectedSeats
-          };
+              
+            var bookedData = {
+                name: $scope.currentUser.name,
+                noOfSeats: $scope.currentUser.count,
+                seatSelected: $scope.currentUser.selectedSeats
+              };
 
 
           
             $scope.bookedUsers.push(bookedData);
-            console.log($scope.currentUser);
-            console.log($scope.bookedUsers);
-            
-            $scope.currentUser.finalNoOfSeats = $scope.currentUser.count;
+           
              $scope.currentUser.count = 0;
 
         } 
