@@ -8,7 +8,8 @@ angular.module('movieSeatReservation')
         $scope.rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
         $scope.cols = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12];
 
-       
+       $scope.totalNoOfSeats = 120;
+
         var reserved = [];
         var selected = [];
 
@@ -111,7 +112,11 @@ angular.module('movieSeatReservation')
         //Start Booking
         $scope.startSelection  = function(user){
 
-            if(user.name.length < 1 ){
+            var seatsAvailable = $scope.totalNoOfSeats - reserved.length;
+            if(user.noOfSeats > seatsAvailable){
+                console.log("only  " + seatsAvailable + " seats are available")
+            }
+            else if(user.name.length < 1 ){
                 return console.log('Enter Your Name & No of Seats You Want');
             }else if(isNaN(user.noOfSeats)){
                 return console.log('Enter a Valid Number of Seats')
