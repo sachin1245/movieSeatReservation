@@ -42,7 +42,7 @@
         </tr>
     </table>
 
-    <div class="legend">
+    <div class="showcase">
         <img src="images/seatsAvailable.png">  Available
         <img src="images/seatsReserved.png" class="padding-left">  Reserved
         <img src="images/seatsSelected.png" class="padding-left">  Selected
@@ -58,13 +58,13 @@
     <div id="bookedTickets">
         <table>
             <tr>
-                <th>Name</th>
-                <th>No of Seats</th>
-                <th>Seats</th>
+                <td>Name</td>
+                <td>No of Seats</td>
+                <td>Seats</td>
             </tr>
             <tr ng-repeat="user in bookedUsers track by $index">
                 <td>{{user.name}}</td>
-                <td>{{user.count}}</td>
+                <td >{{user.finalNoOfSeats}}</td>
                 <td>{{user.selectedSeats.toString()}}</td>
             </tr>
         </table>

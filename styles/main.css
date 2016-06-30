@@ -74,7 +74,7 @@ body {
   margin: 30px auto;
 }
 
-.legend img{
+.showcase img{
   vertical-align: bottom;
 }
 
@@ -84,3 +84,18 @@ body {
 }
 /*---------------table styles------------------------------*/
 
+#bookedTickets table{
+  margin-top: 20px;
+  border: solid 2px blue;
+  padding: 15px;
+  margin-left: 50px;
+
+}
+
+
+#bookedTickets td{
+  margin-right: 20px;
+  font-size: 20px;
+  border-right: solid 2px blue;
+  text-align: center;
+}
