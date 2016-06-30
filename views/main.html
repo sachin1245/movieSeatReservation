@@ -26,7 +26,7 @@
         </tr>
         <tr ng-repeat="row in rows">
             <td class="padding-right" ng-bind="row"></td>
-            <td class="seat" ng-repeat="col in cols" ng-click="seatClicked(row + col)" ng-switch on="getStatus(row + col)" ng-disabled="reserved">
+            <td class="seat" ng-repeat="col in cols" ng-click="checker(row + col)" ng-switch on="getStatus(row + col)" ng-disabled="myVar{{row+col}}">
                 <!-- <div id="pos">
                     <div class="squaredOne" ng-class="myVar">
                         <input type="checkbox" value="None" id="{{row + col}}" name="check" ng-disabled="{{myVar}}" />
@@ -50,10 +50,10 @@
 
      <a href="#" class="button" ng-click="confirmSelection(currentUser)" id="confirmSelection">Confirm Selection</a>
 
-    <div class="buttons">
+    <!-- <div class="buttons">
         <button ng-click="clearSelected()">Clear</button>
         <button ng-click="showSelected()">Show selected seats!</button>
-    </div>
+    </div> -->
 
     <div id="bookedTickets">
         <table>
@@ -64,7 +64,7 @@
             </tr>
             <tr ng-repeat="user in bookedUsers">
                 <tr>{{user.name}}</tr>
-                <tr>{{user.noOfSeats}}</tr>
+                <tr>{{user.count}}</tr>
                 <tr>{{user.selectedSeats}}</tr>
             </tr>
         </table>

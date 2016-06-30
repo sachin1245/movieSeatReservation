@@ -18,28 +18,56 @@ angular.module('seatReservationApp')
          $scope.currentUser = {
             name: '',
             noOfSeats: '',
+            count: 0,
             selectedSeats: []
          }
          $scope.noOfSeats;
 
+         
+         
         
         $scope.seatClicked = function(seatPos) {
             console.log("Selected Seat: " + seatPos);
             var index = selected.indexOf(seatPos);
+            if($scope.currentUser.count < 1){
+              $scope.currentUser.selectedSeats = [];   
+            }
             if($scope.currentUser.noOfSeats > 0){
                     if(index != -1) {
                     selected.splice(index, 1)
                     $scope.currentUser.noOfSeats++;
+                    $scope.currentUser.count++;
                 } else {
                     $scope.currentUser.noOfSeats--;
+                    $scope.currentUser.count++;
                     selected.push(seatPos);
                     $scope.currentUser.selectedSeats.push(seatPos);
+
                  }
             }else{
                 console.log('You have to select how many seats you want');
             }
             
         }
+
+        $scope.checker = function(total){
+            console.log(total);
+
+            var count1= 0;
+            reserved.forEach(function(reserve){
+                if(reserve == total){
+                    count1++;
+                }
+                    
+            });
+            if(count1 > 0){
+                 return ;
+             }else{
+                return $scope.seatClicked(total);
+             }
+           
+         }
+
 
         $scope.getStatus = function(seatPos) {
             if(reserved.indexOf(seatPos) > -1) {
@@ -80,17 +108,28 @@ angular.module('seatReservationApp')
         $scope.confirmSelection = function(user){
             
             
-            console.log($scope.currentUser);
-            console.log($scope.bookedSeats);
+         
 
 
             user.selectedSeats.forEach(function(seat){
                 reserved.push(seat);
             });
+            // reserved.forEach(function(reserved){
+            //     var a = 'myVar'+reserved;
+            //     console.log(a);
+            //     a = true;
+            // })
 
             user.selectedSeats.toString();
 
-            $scope.bookedSeats.push(user);
+            $scope.bookedUsers.push(user);
+            $scope.selected = [];
+
+            console.log($scope.currentUser);
+            console.log($scope.bookedUsers);
+            
+
+             $scope.currentUser.count = 0;
 
         } 
 
