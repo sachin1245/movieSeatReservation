@@ -114,7 +114,7 @@ angular.module('movieSeatReservation')
 
             var seatsAvailable = $scope.totalNoOfSeats - reserved.length;
             if(user.noOfSeats > seatsAvailable){
-                console.log("only  " + seatsAvailable + " seats are available")
+                return console.log("only  " + seatsAvailable + " seats are available")
             }
             else if(user.name.length < 1 ){
                 return console.log('Enter Your Name & No of Seats You Want');
