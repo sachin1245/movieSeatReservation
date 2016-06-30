@@ -28,6 +28,7 @@ angular.module('movieSeatReservation')
 
         $scope.seatClicked = function(seatPos,count) {
             
+
             var index = selected.indexOf(seatPos);
             if($scope.currentUser.count < 1){
               $scope.currentUser.selectedSeats = [];   
@@ -86,8 +87,11 @@ angular.module('movieSeatReservation')
                 }
             });
             
-
-            if($scope.currentUser.name.length < 1){
+            var seatsAvailable = $scope.totalNoOfSeats - reserved.length;
+            if($scope.currentUser.noOfSeats > seatsAvailable){
+                return console.log("only  " + seatsAvailable + " seats are available");
+                $scope.currentUser.noOfSeats = 0;
+            }else if($scope.currentUser.name.length < 1){
                  return console.log('Enter a Valid Name')
              }else if($scope.currentUser.noOfSeats < 1 && count2 < 1){
                  return console.log('The no of Seats should atleast be 1');
@@ -114,7 +118,8 @@ angular.module('movieSeatReservation')
 
             var seatsAvailable = $scope.totalNoOfSeats - reserved.length;
             if(user.noOfSeats > seatsAvailable){
-                return console.log("only  " + seatsAvailable + " seats are available")
+                return console.log("only  " + seatsAvailable + " seats are available");
+                $scope.currentUser.noOfSeats = 0;
             }
             else if(user.name.length < 1 ){
                 return console.log('Enter Your Name & No of Seats You Want');
