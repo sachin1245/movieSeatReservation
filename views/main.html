@@ -8,7 +8,7 @@
             <label for="name">Name</label>
             <input type="text" id="name" placeholder="Username" ng-model="currentUser.name"/>
             <label for="seats">Number of Seats </label>
-            <input type="text" id="seats" placeholder="No of Seats" ng-model="currentUser.noOfSeats">
+            <input type="text" id="seats" placeholder="No of Seats" ng-model="currentUser.noOfSeats" ng-bind="currenUser.initialNoOfSeats">
 
             
                 <a href="#" class="button" ng-click="startSelection(currentUser)">Start Selection</a>
@@ -64,8 +64,8 @@
             </tr>
             <tr ng-repeat="user in bookedUsers track by $index">
                 <td>{{user.name}}</td>
-                <td >{{user.finalNoOfSeats}}</td>
-                <td>{{user.selectedSeats.toString()}}</td>
+                <td >{{user.noOfSeats}}</td>
+                <td>{{user.seatSelected.toString()}}</td>
             </tr>
         </table>
     </div>

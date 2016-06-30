@@ -9,26 +9,24 @@ angular.module('seatReservationApp')
         $scope.cols = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12];
 
        
-        var reserved = ['A2', 'A3', 'C5', 'C6', 'C7', 'C8', 'J1', 'J2', 'J3', 'J4'];
+        var reserved = [];
         var selected = [];
 
         
 
         $scope.bookedUsers =[];
-        $scope.allUsers = [];
         $scope.currentUser = {
             name: '',
             noOfSeats: '',
             count: 0,
-            finalNoOfSeats: '',
             selectedSeats: []
         }
-        $scope.noOfSeats;
+       
 
          
          
         
-        $scope.seatClicked = function(seatPos) {
+        $scope.seatClicked = function(seatPos,count) {
             
             var index = selected.indexOf(seatPos);
             if($scope.currentUser.count < 1){
@@ -42,8 +40,8 @@ angular.module('seatReservationApp')
                 }
                     
             });
-
-            if($scope.currentUser.noOfSeats > 0){
+            console.log(count);
+            if($scope.currentUser.noOfSeats + count > 0){
                     if(index != -1) {
                         selected.splice(index, 1);
                         
@@ -74,6 +72,7 @@ angular.module('seatReservationApp')
             console.log(total);
 
             var count1= 0;
+            var count2 = 0;
             reserved.forEach(function(reserve){
                 if(reserve == total){
                     count1++;
@@ -81,15 +80,21 @@ angular.module('seatReservationApp')
                     
             });
 
+            selected.forEach(function(select){
+                if(select == total){
+                    count2++;
+                }
+            });
+            
+
             if($scope.currentUser.name.length < 1){
                  return console.log('Enter a Valid Name')
-             }else if($scope.currentUser.noOfSeats < 1){
-                 
+             }else if($scope.currentUser.noOfSeats < 1 && count2 < 1){
                  return console.log('The no of Seats should atleast be 1');
              }else if(count1 > 0){
                 return console.log('This seat is Already booked');
              }else{
-                return $scope.seatClicked(total);
+                return $scope.seatClicked(total,count2);
              }
            
          }
@@ -131,10 +136,6 @@ angular.module('seatReservationApp')
             $scope.currentUser = user;
             console.log($scope.currentUser.noOfSeats);
             console.log(user);
-            $scope.noOfSeats = seats;
-            $scope.myVar = "booked";
-
-            $scope.myVar1 = true;
 
         }  
 
@@ -153,8 +154,15 @@ angular.module('seatReservationApp')
                 reserved.push(seat);
             });
           
+          var bookedData = {
+            name: $scope.currentUser.name,
+            noOfSeats: $scope.currentUser.count,
+            seatSelected: $scope.currentUser.selectedSeats
+          };
+
+
           
-            $scope.bookedUsers.push(user);
+            $scope.bookedUsers.push(bookedData);
             console.log($scope.currentUser);
             console.log($scope.bookedUsers);
             
@@ -162,5 +170,7 @@ angular.module('seatReservationApp')
              $scope.currentUser.count = 0;
 
         } 
+
+
 
     });
