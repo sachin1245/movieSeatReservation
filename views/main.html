@@ -62,10 +62,10 @@
                 <th>No of Seats</th>
                 <th>Seats</th>
             </tr>
-            <tr ng-repeat="user in bookedUsers">
-                <tr>{{user.name}}</tr>
-                <tr>{{user.count}}</tr>
-                <tr>{{user.selectedSeats}}</tr>
+            <tr ng-repeat="user in bookedUsers track by $index">
+                <td>{{user.name}}</td>
+                <td>{{user.count}}</td>
+                <td>{{user.selectedSeats.toString()}}</td>
             </tr>
         </table>
     </div>

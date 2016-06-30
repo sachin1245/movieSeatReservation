@@ -14,14 +14,15 @@ angular.module('seatReservationApp')
 
         $scope.bookedSeats = []
 
-         $scope.bookedUsers =[];
-         $scope.currentUser = {
+        $scope.bookedUsers =[];
+         
+        $scope.currentUser = {
             name: '',
             noOfSeats: '',
             count: 0,
             selectedSeats: []
-         }
-         $scope.noOfSeats;
+        }
+        $scope.noOfSeats;
 
          
          
@@ -61,7 +62,7 @@ angular.module('seatReservationApp')
                     
             });
             if(count1 > 0){
-                 return ;
+                 return console.log('This seat is Already booked');
              }else{
                 return $scope.seatClicked(total);
              }
@@ -95,6 +96,13 @@ angular.module('seatReservationApp')
 
         $scope.startSelection  = function(user){
 
+            if(user.name.length < 1 ){
+                return console.log('Enter Your Name & No of Seats You Want');
+            }else if(isNaN(user.noOfSeats)){
+                return console.log('Enter a Valid Number of Seats')
+            }else if(user.noOfSeats < 1){
+                return console.log('No of Seats Should be Atleast One')
+            }
             $scope.currentUser = user;
 
             console.log(user);
@@ -114,11 +122,7 @@ angular.module('seatReservationApp')
             user.selectedSeats.forEach(function(seat){
                 reserved.push(seat);
             });
-            // reserved.forEach(function(reserved){
-            //     var a = 'myVar'+reserved;
-            //     console.log(a);
-            //     a = true;
-            // })
+          
 
             user.selectedSeats.toString();
 
