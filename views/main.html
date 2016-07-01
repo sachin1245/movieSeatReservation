@@ -19,7 +19,7 @@
 
         <div id="screen">Screen This Way</div>
 
-
+	<!-- Seat Layout for selection -->
     <table class="seatLayout">
         <tr>
             <td ></td>
@@ -27,15 +27,18 @@
         </tr>
         <tr ng-repeat="row in rows">
             <td  ng-bind="row"></td>
-            <td class="seat" ng-repeat="col in cols" ng-click="checker(row + col)" ng-switch on="getStatus(row + col)" >
-                <img ng-switch-when="selected" src="images/seatsSelected.png">
+            <!-- Calls checker funciton when any seat is clicked -->  
+            <td class="seat" ng-repeat="col in cols" ng-click="checker(row + col)" ng-switch on="getStatus(row + col)" >               
+            	<img ng-switch-when="selected" src="images/seatsSelected.png">
                 <img ng-switch-when="reserved" src="images/seatsReserved.png">
                 <img ng-switch-default src="images/seatsAvailable.png">
-
+            
             </td>
         </tr>
     </table>
 
+	
+	<!--To tell the user color of seats means -->
     <div class="showcase">
         <img src="images/seatsAvailable.png">  Available
         <img src="images/seatsReserved.png" >  Reserved
@@ -44,6 +47,8 @@
 
      <a href="#" class="button" ng-click="confirmSelection(currentUser)" id="confirmSelection">Confirm Selection</a>
 
+
+	<!-- To print the booked users data -->
     <div id="bookedTickets">
         <table class="table table-striped">
             <tr>
