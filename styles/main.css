@@ -84,3 +84,16 @@ a:active{
   margin-top: 20px;
  
 }
+
+/*Screen*/
+
+#screen{
+  margin-top: 10px;
+  margin-left: 20%;
+  width: 60%;
+  text-align: center;
+  padding: 1px;
+  height: 20px;
+  background: rgba(0,0,255,0.5);
+  color: white;
+}
